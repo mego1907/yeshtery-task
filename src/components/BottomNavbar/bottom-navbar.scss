@@ -1,0 +1,26 @@
+.bottom-navbar {
+  display: flex;
+  align-items: center;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    a {
+      color: #fff;
+
+      @media screen and (max-width: 767px) {
+        font-size: 13px;
+        gap: 10px;
+      }
+    }
+
+    li:last-of-type {
+      a {
+        color: #f11133;
+        font-weight: bold;
+      }
+    }
+  }
+}

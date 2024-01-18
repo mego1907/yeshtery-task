@@ -1,0 +1,54 @@
+.top-navbar {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100%;
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .offer-banner {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    font-size: 14px;
+
+    a {
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    @media screen and (max-width: 1199px) {
+      display: none;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    gap: 32px;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      span {
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      gap: 10px;
+    }
+  }
+}
