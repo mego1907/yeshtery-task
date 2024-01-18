@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import { BottomNavbar, Navbar, TopNavbar, Footer, SimilarProducts, ProductDetails, Cart } from './components'
+import React, { Component, Suspense } from 'react'
+import { BottomNavbar, Navbar, TopNavbar, Footer, SimilarProducts, Cart } from './components'
+
+
 
 import productImg11 from "./images/product-1-1.png";
 import productImg12 from "./images/Product-1-2.png";
@@ -11,6 +13,8 @@ import productImg21 from "./images/product-2-1.png";
 import productImg31 from "./images/product-3-1.png";
 
 import productImg41 from "./images/product-4-1.png";
+
+const LazyProductDetails = React.lazy(() => import("./components/ProductDateils/ProductDetails"))
 
 const products = [
   {
@@ -362,6 +366,7 @@ export default class App extends Component {
 
   render() {
     return (
+
       <div className="app">
         <TopNavbar />
         <Navbar
@@ -371,15 +376,18 @@ export default class App extends Component {
           cart={this.state.cart}
         />
         <BottomNavbar />
-        <ProductDetails
-          product={this.state.selectedProduct}
-          addToCart={this.addToCart}
-          changeSize={this.changeSize}
-          changeColor={this.changeColor}
-          decreaseQty={this.decreaseQty}
-          increaseQty={this.increaseQty}
-          getCartTotal={this.getCartTotal}
-        />
+        <Suspense fallback={<p>Loading...</p>}>
+          <LazyProductDetails
+            product={this.state.selectedProduct}
+            addToCart={this.addToCart}
+            changeSize={this.changeSize}
+            changeColor={this.changeColor}
+            decreaseQty={this.decreaseQty}
+            increaseQty={this.increaseQty}
+            getCartTotal={this.getCartTotal}
+          />
+        </Suspense>
+        
         <SimilarProducts
           products={this.state.products}
           selectProduct={this.selectProduct}
